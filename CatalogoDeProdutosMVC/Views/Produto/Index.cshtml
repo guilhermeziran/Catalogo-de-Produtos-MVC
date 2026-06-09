@@ -9,7 +9,7 @@
 
 <div>
     <table border="1">
-        
+
         <thead>
             <tr>
                 <th>#</th>
@@ -18,18 +18,25 @@
             </tr>
         </thead>
 
-    <tbody>
+        <tbody>
 
-        @for (int i = 0; i < ViewBag.produtos.Count; i++)
-        {
-            <tr>
-                <td>@(i + 1)</td>
-                <td>@ViewBag.produtos[i]</td>
-                <td>R$ @ViewBag.precos[i].ToString("N2")</td>
-            </tr>
-        }
-    </tbody>
-    
+            @for (int i = 0; i < ViewBag.produtos.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+
+                    @if (ViewBag.precos[i] < 100)
+                    {
+                        <td style="color: green">@ViewBag.produtos[i]</td>
+                    }
+                    else
+                    {
+                        <td>@ViewBag.produtos[i]</td>
+                    }
+
+                    <td>R$ @ViewBag.precos[i].ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+   </table> 
 </div>
-
-</table>
